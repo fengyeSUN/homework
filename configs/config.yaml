@@ -1,0 +1,39 @@
+data:
+  augmentation:
+    brightness_range: 0.15
+    contrast_range: 0.15
+    horizontal_flip: true
+    rotation_range: 20
+    vertical_flip: true
+  image_size: 256
+  num_workers: 4
+  test_dir: ./test
+  train_dir: ./train
+model:
+  backbone: resnet18
+  hidden_dim: 128
+  num_attention_layers: 2
+  num_classes: 1
+train:
+  batch_size: 16
+  early_stopping:
+    min_delta: 0.0005
+    patience: 15
+  focal_loss:
+    alpha: 0.75
+    gamma: 2
+  learning_rate: 5.0e-05
+  loss_weights:
+    bce: 0.2
+    dice: 0.3
+    focal: 0.5
+  num_epochs: 100
+  pos_weight: 30.0
+  save_dir: ./train_model
+  save_frequency: 5
+  weight_decay: 1.0e-05
+visualization:
+  frequency: 100
+  num_visualizations: 8
+  save_attention_maps: true
+  save_predictions: true
